@@ -584,7 +584,7 @@ main:focus {
   }
 }
 
-@media (max-width: 379px) {
+@media (max-width: 419px) {
   .js .site-header__inner {
     flex-wrap: nowrap;
     gap: 0.5rem;
@@ -1047,109 +1047,90 @@ figcaption::before {
   }
 }
 
-/* 03 — De la terrasse à la plage */
+/* 03 — De la terrasse à la plage / l’océan (section unique) */
 
-.scene--chemin {
-  padding-block: clamp(5rem, 14vw, 11rem) clamp(5rem, 13vw, 10rem);
-  background: linear-gradient(to bottom, var(--dune) 0%, var(--brume) 100%);
+.anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
 }
 
-.chemin__title {
-  max-width: 13em;
-  font-size: clamp(2.4rem, 1.3rem + 4.4vw, 5.25rem);
-  line-height: 1.02;
-}
-
-.chemin__body {
-  margin-top: clamp(2rem, 5vw, 3.5rem);
-  max-width: 34em;
-  font-size: 1.125rem;
-}
-
-.chemin__aside {
-  padding-left: 1.1rem;
-  border-left: 1px solid var(--bois);
-  color: var(--texte-doux);
-  font-size: 1rem;
-}
-
-.chemin__body p + .chemin__aside {
-  margin-top: 1.75rem;
-}
-
-@media (min-width: 900px) {
-  .chemin {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 2rem;
-  }
-
-  .chemin .scene-mark,
-  .chemin__title {
-    grid-column: 1 / span 9;
-  }
-
-  .chemin__body {
-    grid-column: 7 / span 6;
-  }
-}
-
-/* 04 — La plage */
-
-.scene--plage {
+.scene--ocean {
   --focus: var(--dune);
-  padding-block: clamp(6rem, 17vw, 13rem);
+  position: relative;
+  padding-block: clamp(2.75rem, 1.6rem + 4vw, 5.5rem);
   background: var(--atlantique);
   color: var(--brume);
 }
 
-.scene--plage .scene-mark {
+.scene--ocean .scene-mark {
   color: #e9d5bf;
 }
 
-.scene--plage h2,
-.scene--plage h3 {
+.scene--ocean h2,
+.scene--ocean h3 {
   color: var(--dune);
 }
 
-.plage__title {
-  max-width: 14em;
+.ocean__head {
+  max-width: 60rem;
 }
 
-.horizon {
-  height: 1px;
-  margin-block: clamp(3rem, 8vw, 5.5rem) clamp(2.5rem, 5vw, 3.5rem);
-  background: linear-gradient(to right, rgb(215 231 229 / 0.7), rgb(215 231 229 / 0.25));
-  transform-origin: left center;
+.scene--ocean h2 {
+  font-size: clamp(2rem, 1.2rem + 3.4vw, 3.75rem);
+}
+
+.ocean__intro {
+  margin-top: 1.25rem;
+  max-width: 34em;
+  font-size: 1.125rem;
 }
 
 .plages {
   display: grid;
-  gap: 2.5rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid rgb(215 231 229 / 0.3);
+}
+
+.plages__item {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid rgb(215 231 229 / 0.3);
 }
 
 .plages h3 {
-  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.75rem);
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.25rem);
   font-weight: 350;
-  line-height: 1.05;
+  line-height: 1.1;
 }
 
 .plages p {
-  margin-top: 0.9rem;
-  max-width: 24em;
+  margin-top: 0.7rem;
+  max-width: 26em;
 }
 
-.plage__note {
-  margin-top: clamp(3rem, 7vw, 5rem);
-  max-width: 40em;
-  color: rgb(215 231 229 / 0.85);
+.ocean__note {
+  margin-top: 1.5rem;
+  max-width: 46em;
+  color: rgb(215 231 229 / 0.88);
   font-size: 0.9375rem;
+}
+
+.ocean__note a {
+  color: var(--dune);
 }
 
 @media (min-width: 760px) {
   .plages {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2.5rem clamp(2rem, 4vw, 4rem);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    border-bottom: 0;
+  }
+
+  .plages__item {
+    padding-block: 1.75rem 0.5rem;
+    border-bottom: 0;
   }
 }
 
@@ -1999,19 +1980,6 @@ figcaption::before {
 
 .js.motion-ok .journee:nth-child(4) {
   transition-delay: 0.36s;
-}
-
-.js.motion-ok .scene--plage .reveal {
-  transition-duration: 1.4s, 1.5s;
-}
-
-.js.motion-ok .horizon {
-  transform: scaleX(0);
-  transition: transform 2.2s var(--ease) 0.2s;
-}
-
-.js.motion-ok .horizon.is-visible {
-  transform: scaleX(1);
 }
 
 /* Raccord léger sur téléphone : la terrasse se précise à l’arrivée. */

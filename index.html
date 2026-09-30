@@ -39,7 +39,7 @@
       imagesizes="(max-width: 800px) 100vw, 52vw"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="assets/css/site.css?v=3" />
+    <link rel="stylesheet" href="assets/css/site.css?v=5" />
     <script>
       document.documentElement.classList.add('js');
     </script>
@@ -215,66 +215,50 @@
           </div>
         </section>
 
-        <section class="scene scene--chemin" id="vers-la-plage" aria-labelledby="titre-chemin">
-          <!--
-            Emplacement des plans du trajet réel (plans 4 à 6 du plan de prises de vue) :
-            départ du logement, repères du chemin, accès à la plage. Aucun média disponible à ce jour.
-            Ne pas tracer d’itinéraire ni afficher de temps de marche avant vérification sur place.
-          -->
-          <div class="chemin wrap">
-            <p class="scene-mark reveal">
-              <span class="scene-mark__num">03</span>
-              <span class="scene-mark__label">De la terrasse à la plage</span>
-            </p>
-            <h2 id="titre-chemin" class="chemin__title reveal">L’océan à environ 300&nbsp;mètres</h2>
-            <div class="chemin__body reveal">
-              <p>
-                Les plages des Estagnots, des Bourdaines et du Penon se rejoignent à pied, tout comme les commerces et
-                les restaurants du quartier.
+        <!--
+          Emplacements des futurs médias (plans 4 à 7 du plan de prises de vue) : départ du logement,
+          repères du trajet, accès à la plage, vue large, vagues. Aucun média disponible à ce jour.
+          Ne pas tracer d’itinéraire ni afficher de temps de marche avant vérification sur place.
+          L’ancre #vers-la-plage (« De la terrasse à la plage ») est conservée au début de la section.
+        -->
+        <section class="scene scene--ocean" id="plage" aria-labelledby="titre-plage">
+          <span class="anchor" id="vers-la-plage"></span>
+          <div class="ocean wrap">
+            <header class="ocean__head reveal">
+              <p class="scene-mark">
+                <span class="scene-mark__num">03</span>
+                <span class="scene-mark__label">De la terrasse à la plage</span>
               </p>
-              <p>
-                À Seignosse, on franchit la dune par les sentiers aménagés&nbsp;: ils protègent la végétation qui la
-                retient.
+              <h2 id="titre-plage">L’océan à environ 300&nbsp;mètres</h2>
+              <p class="ocean__intro">
+                On rejoint la côte à pied, avec les commerces et les restaurants du quartier. Trois plages se suivent
+                ici, du sud au nord.
               </p>
-              <p class="chemin__aside">
-                Les serviettes de plage ne sont pas fournies&#8239;; pensez à les glisser dans vos bagages.
-              </p>
-            </div>
-          </div>
-        </section>
+            </header>
 
-        <section class="scene scene--plage" id="plage" aria-labelledby="titre-plage">
-          <!--
-            Emplacement de l’accès réel à la plage, de la vue dégagée et du plan calme des vagues
-            (plans 6 et 7). Aucun média disponible à ce jour.
-          -->
-          <div class="plage wrap">
-            <p class="scene-mark reveal">
-              <span class="scene-mark__num">04</span>
-              <span class="scene-mark__label">La plage</span>
-            </p>
-            <h2 id="titre-plage" class="plage__title reveal">Trois plages à rejoindre à pied</h2>
-            <div class="horizon" aria-hidden="true"></div>
             <ul class="plages" aria-label="Plages voisines, du sud au nord">
               <li class="plages__item reveal">
                 <h3>Les Estagnots</h3>
                 <p>
-                  Dans le prolongement des plages d’Hossegor. Des vagues puissantes, réputées chez les surfeurs, et
-                  le label Pavillon bleu.
+                  Dans le prolongement des plages d’Hossegor. Vagues puissantes, réputées chez les surfeurs. Label
+                  Pavillon bleu.
                 </p>
               </li>
               <li class="plages__item reveal">
                 <h3>Les Bourdaines</h3>
-                <p>Entre les Estagnots et le Penon, nichée dans la dune.</p>
+                <p>Nichée dans la dune, entre les Estagnots et le Penon.</p>
               </li>
               <li class="plages__item reveal">
                 <h3>Le Penon</h3>
-                <p>Label Pavillon bleu. La baignade y est surveillée de mai à octobre.</p>
+                <p>Label Pavillon bleu. Baignade surveillée de mai à octobre.</p>
               </li>
             </ul>
-            <p class="plage__note reveal">
-              Les autres plages de la commune sont surveillées de juin à septembre&nbsp;: on se baigne entre les
-              drapeaux. Dates et horaires sont fixés chaque saison par la commune.
+
+            <p class="ocean__note reveal">
+              On accède à la plage par les sentiers aménagés, qui protègent la dune. Les Estagnots et les Bourdaines
+              sont surveillées de juin à septembre&nbsp;: baignez-vous entre les drapeaux. Dates et horaires sont
+              fixés chaque saison par la commune (voir
+              <a href="https://www.seignosse-tourisme.com/decouvrir-seignosse/les-plages-de-seignosse/" rel="noopener" target="_blank">l’office de tourisme<span class="visually-hidden"> (nouvel onglet)</span></a>).
             </p>
           </div>
         </section>
@@ -287,7 +271,7 @@
           <div class="journees wrap">
             <header class="journees__head">
               <p class="scene-mark reveal">
-                <span class="scene-mark__num">05</span>
+                <span class="scene-mark__num">04</span>
                 <span class="scene-mark__label">Vos journées</span>
               </p>
               <h2 id="titre-alentours" class="reveal">Seignosse et les alentours</h2>
