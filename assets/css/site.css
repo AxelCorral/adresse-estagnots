@@ -402,13 +402,13 @@ main:focus {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem 1.75rem;
+  gap: 0.5rem 2.25rem;
 }
 
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 1.5rem;
+  gap: 0 2rem;
 }
 
 .site-nav__list a {
@@ -2045,7 +2045,8 @@ figcaption::before {
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
-  min-height: min(46rem, calc(100svh - var(--header-h)));
+  /* Le bloc remplit la hauteur sous l'en-tête, sans plafond, et grandit si le contenu l'exige. */
+  min-height: calc(100svh - var(--header-h));
 }
 
 .hero-copy {
@@ -2060,7 +2061,7 @@ figcaption::before {
 
 .hero-copy-inner {
   width: 100%;
-  padding: clamp(2.5rem, 6vh, 4.5rem) clamp(1.5rem, 4vw, 5rem) clamp(2.25rem, 5vh, 3.5rem);
+  padding: clamp(2.5rem, 6svh, 4.5rem) clamp(1.5rem, 5cqi, 4.5rem) clamp(2.25rem, 5svh, 3.5rem);
 }
 
 .hero .eyebrow {
@@ -2077,8 +2078,8 @@ figcaption::before {
   max-width: 100%;
   margin-bottom: 1.5rem;
   color: #fff;
-  font-size: clamp(2.5rem, 13cqi, 5.25rem);
-  line-height: 1.02;
+  font-size: clamp(2.4rem, min(12cqi, 9.5svh), 5.25rem);
+  line-height: 1.04;
   overflow-wrap: break-word;
   text-wrap: balance;
 }
@@ -2091,7 +2092,7 @@ figcaption::before {
 
 .hero-lead {
   max-width: 34rem;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1.5rem, 3svh, 2rem);
   color: #d8e7e9;
   font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.2rem);
   line-height: 1.6;
@@ -2130,8 +2131,8 @@ figcaption::before {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem clamp(1.5rem, 3vw, 3rem);
-  margin: clamp(2rem, 5vh, 3.5rem) 0 0;
-  padding: 1.4rem 0 0;
+  margin: clamp(1.75rem, 4svh, 3.5rem) 0 0;
+  padding: 1.25rem 0 0;
   border-top: 1px solid rgb(255 255 255 / 0.25);
 }
 
@@ -2237,5 +2238,16 @@ figcaption::before {
   .hero-image-wrap {
     height: 44svh;
     min-height: 16rem;
+  }
+}
+
+/* En-tête : sur écran moyen, les espaces se resserrent pour que la navigation tienne sur une ligne. */
+@media (min-width: 900px) and (max-width: 1120px) {
+  .site-nav {
+    gap: 0.5rem 1.25rem;
+  }
+
+  .site-nav__list {
+    gap: 0 1rem;
   }
 }
