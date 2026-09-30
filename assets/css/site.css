@@ -2035,3 +2035,207 @@ figcaption::before {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ==========================================================================
+   Ouverture d’origine : panneau bleu Atlantique, titre doré, photo de la terrasse.
+   Le titre s’adapte à la largeur réelle du panneau (unités de conteneur),
+   ce qui évite qu’il déborde sur la photo quel que soit le zoom du navigateur.
+   ========================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 48fr) minmax(0, 52fr);
+  min-height: min(46rem, calc(100svh - var(--header-h)));
+}
+
+.hero-copy {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  background: var(--atlantique);
+  color: #fff;
+  container-type: inline-size;
+  --focus: #fff;
+}
+
+.hero-copy-inner {
+  width: 100%;
+  padding: clamp(2.5rem, 6vh, 4.5rem) clamp(1.5rem, 4vw, 5rem) clamp(2.25rem, 5vh, 3.5rem);
+}
+
+.hero .eyebrow {
+  margin-bottom: 1.5rem;
+  color: #f3c47d;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: clamp(2.5rem, 13cqi, 5.25rem);
+  line-height: 1.02;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.hero h1 em {
+  display: block;
+  color: #f3c47d;
+  font-weight: 350;
+}
+
+.hero-lead {
+  max-width: 34rem;
+  margin-bottom: 2rem;
+  color: #d8e7e9;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.75rem;
+}
+
+.button-sand {
+  border-color: #f3c47d;
+  background: #f3c47d;
+  color: #0b2b35;
+}
+
+.button-sand:hover {
+  border-color: #ffdb9b;
+  background: #ffdb9b;
+}
+
+.hero .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  border-bottom: 1px solid currentColor;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem clamp(1.5rem, 3vw, 3rem);
+  margin: clamp(2rem, 5vh, 3.5rem) 0 0;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid rgb(255 255 255 / 0.25);
+}
+
+.hero-facts li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.hero-facts strong {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 1.4rem + 1vw, 2.4rem);
+  font-weight: 350;
+  line-height: 1;
+}
+
+.hero-facts span {
+  color: #c4d6d9;
+  font-size: 0.875rem;
+}
+
+.hero-image-wrap {
+  position: relative;
+  min-width: 0;
+  min-height: 22rem;
+  overflow: hidden;
+  background: #83aeb0;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 45% 60%;
+}
+
+.hero-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 60% 0 0;
+  background: linear-gradient(transparent, rgb(5 30 37 / 0.5));
+  pointer-events: none;
+}
+
+.hero-image-label {
+  position: absolute;
+  z-index: 1;
+  right: clamp(1.25rem, 4vw, 4rem);
+  bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.label-line {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero-image-wrap {
+    order: -1;
+    height: clamp(20rem, 55vw, 30rem);
+    min-height: 0;
+  }
+
+  .hero-copy-inner {
+    padding: 2.5rem var(--gutter) 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 11.5vw, 4rem);
+  }
+
+  .hero-facts {
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .hero-facts li {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image-wrap {
+    height: 44svh;
+    min-height: 16rem;
+  }
+}
