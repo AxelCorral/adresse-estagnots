@@ -1,0 +1,2037 @@
+/* ==========================================================================
+   L’Adresse Estagnots — feuille de styles
+   Direction artistique : « élégance côte landaise » (preparation/direction-artistique)
+   ========================================================================== */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-latin-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope-latin-var.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Palette de la préparation */
+  --atlantique: #103a47;
+  --atlantique-fonce: #0b2b35;
+  --dune: #f7f5f0;
+  --sable: #efebe3;
+  --brume: #d7e7e5;
+  --pin: #2e443b;
+  --bois: #9c714c;
+  --bois-texte: #835a39;
+  --texte: #233039;
+  --texte-doux: #4a5960;
+  --ligne: rgb(16 58 71 / 0.16);
+  --ligne-claire: rgb(247 245 240 / 0.24);
+  --focus: var(--atlantique);
+
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --header-h: 4rem;
+  --gutter: clamp(1rem, 4.5vw, 3.5rem);
+  --max: 78rem;
+  --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+
+@media (min-width: 900px) {
+  :root {
+    --header-h: 4.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: var(--header-h);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html.has-dialog {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--dune);
+  color: var(--texte);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 450;
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-weight: 380;
+  color: var(--atlantique);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.35rem, 1.5rem + 3.4vw, 4.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.018em;
+}
+
+h3 {
+  font-size: 1.375rem;
+  line-height: 1.2;
+  font-weight: 450;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+p + p {
+  margin-top: 1em;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+main:focus {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--atlantique);
+  color: var(--dune);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+  --focus: var(--bois);
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--max));
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Éléments typographiques et boutons
+   -------------------------------------------------------------------------- */
+
+.kicker {
+  margin-bottom: 1rem;
+  color: var(--bois-texte);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.lead {
+  font-size: clamp(1.125rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.55;
+  max-width: 34em;
+}
+
+.scene-mark {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  margin-bottom: 1.25rem;
+  color: var(--bois-texte);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.scene-mark__num {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  font-weight: 450;
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.scene-mark__num::after {
+  content: "";
+  display: inline-block;
+  width: 2.25rem;
+  height: 1px;
+  margin-left: 0.9rem;
+  vertical-align: middle;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.scene-mark__hint {
+  flex-basis: 100%;
+  color: var(--texte-doux);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--atlantique);
+  border-radius: 3px;
+  background: var(--atlantique);
+  color: var(--dune);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.button:hover {
+  background: var(--atlantique-fonce);
+  border-color: var(--atlantique-fonce);
+}
+
+.button--small {
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.9375rem;
+}
+
+.button--light {
+  border-color: var(--dune);
+  background: var(--dune);
+  color: var(--atlantique);
+}
+
+.button--light:hover {
+  border-color: var(--brume);
+  background: var(--brume);
+}
+
+.button--outline-light {
+  border-color: rgb(247 245 240 / 0.7);
+  background: transparent;
+  color: var(--dune);
+}
+
+.button--outline-light:hover {
+  border-color: var(--dune);
+  background: rgb(247 245 240 / 0.1);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  color: var(--atlantique);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgb(16 58 71 / 0.35);
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.link-arrow:hover {
+  text-decoration-color: currentColor;
+}
+
+.link-arrow span {
+  transition: transform 0.25s var(--ease);
+}
+
+.link-arrow:hover span {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   En-tête
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgb(247 245 240 / 0.96);
+  border-bottom: 1px solid var(--ligne);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .site-header {
+    background: rgb(247 245 240 / 0.88);
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  min-height: var(--header-h);
+  padding-inline: var(--gutter);
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: auto;
+  padding-block: 0.4rem;
+  color: var(--atlantique);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.brand__name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 420;
+  letter-spacing: -0.01em;
+}
+
+.brand__place {
+  margin-top: 0.3rem;
+  color: var(--bois-texte);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.75rem;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+}
+
+.site-nav__list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--texte);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 calc(50% + 0.8em);
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.3s var(--ease), color 0.2s ease;
+}
+
+.site-nav__list a:hover {
+  color: var(--atlantique);
+  background-size: 100% 1px;
+}
+
+.header-book,
+.menu-toggle {
+  display: none;
+}
+
+/* Dans l’en-tête, l’accès à la réservation reste secondaire : un seul bouton plein par écran. */
+@media (min-width: 900px) {
+  .site-nav__cta {
+    min-height: 2.75rem;
+    padding: 0.55rem 1.15rem;
+    background: transparent;
+    color: var(--atlantique);
+    font-size: 0.9375rem;
+  }
+
+  .site-nav__cta:hover {
+    background: var(--atlantique);
+    color: var(--dune);
+  }
+}
+
+.menu-toggle {
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.5rem 0.25rem 0.5rem 0.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--atlantique);
+  font: 700 0.9375rem/1 var(--sans);
+  cursor: pointer;
+}
+
+.menu-toggle__icon {
+  position: relative;
+  display: inline-block;
+  width: 1.25rem;
+  height: 0.75rem;
+}
+
+.menu-toggle__icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease), top 0.3s var(--ease);
+}
+
+.menu-toggle__icon span:first-child {
+  top: 0;
+}
+
+.menu-toggle__icon span:last-child {
+  top: calc(100% - 1.5px);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon span:first-child {
+  top: calc(50% - 0.75px);
+  transform: rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon span:last-child {
+  top: calc(50% - 0.75px);
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 899px) {
+  .site-nav__cta {
+    display: none;
+  }
+
+  /* Sans JavaScript : la navigation reste visible sur une seconde ligne,
+     et l’en-tête, plus haut, ne reste pas collé en haut de l’écran. */
+  html:not(.js) .site-header {
+    position: relative;
+  }
+
+  html:not(.js) {
+    scroll-padding-top: 0;
+  }
+
+  .site-nav {
+    order: 3;
+    width: 100%;
+    padding-bottom: 0.25rem;
+  }
+
+  .site-nav__list {
+    gap: 0 1.1rem;
+  }
+
+  .header-book {
+    display: inline-flex;
+  }
+
+  .js .menu-toggle {
+    display: inline-flex;
+  }
+
+  .js .site-nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    z-index: 49;
+    display: block;
+    width: auto;
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    padding: 1.5rem var(--gutter) 2rem;
+    background: var(--dune);
+    border-bottom: 1px solid var(--ligne);
+    box-shadow: 0 24px 40px -24px rgb(16 58 71 / 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.5rem);
+    transition: opacity 0.25s ease, transform 0.3s var(--ease), visibility 0s linear 0.3s;
+  }
+
+  .js .site-header.is-open .site-nav {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.25s ease, transform 0.3s var(--ease), visibility 0s;
+  }
+
+  .js .site-nav__list {
+    display: block;
+  }
+
+  .js .site-nav__list li + li {
+    border-top: 1px solid var(--ligne);
+  }
+
+  .js .site-nav__list a {
+    display: flex;
+    min-height: 3.5rem;
+    color: var(--atlantique);
+    font-family: var(--serif);
+    font-size: 1.625rem;
+    font-weight: 400;
+    background: none;
+  }
+
+  .js .site-nav__cta {
+    display: flex;
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-width: 379px) {
+  .js .site-header__inner {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+
+  .brand__name {
+    font-size: 1.25rem;
+  }
+
+  .brand__place {
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+  }
+
+  .header-book {
+    padding-inline: 0.8rem;
+  }
+
+  .menu-toggle {
+    padding-inline: 0.5rem;
+  }
+
+  .menu-toggle__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 359px) {
+  .brand__place {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   La visite — scènes
+   -------------------------------------------------------------------------- */
+
+.scene__media {
+  overflow: hidden;
+  background-color: #d6d0c4;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.scene__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+img.is-missing {
+  visibility: hidden;
+}
+
+.scene__media--salon,
+.scene__media--salon img {
+  background-position: 18% 52%;
+  object-position: 18% 52%;
+}
+
+.scene__media--terrasse,
+.scene__media--terrasse img {
+  background-position: 40% 62%;
+  object-position: 40% 62%;
+}
+
+/* 01 — Le séjour (ouverture) */
+
+.scene--sejour {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: calc(100svh - var(--header-h));
+}
+
+.scene--sejour .scene__media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-panel__lead {
+  margin-top: 1.25rem;
+  max-width: 30em;
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.55;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.25rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ligne);
+  font-size: 0.9375rem;
+  line-height: 1.3;
+}
+
+.facts strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.625rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.hero-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.hero-panel__mark {
+  margin-bottom: 0;
+}
+
+@media (max-width: 899px) {
+  /* Le dégradé suit la hauteur du texte : le haut de la photo (la baie) reste lumineux. */
+  .hero-panel {
+    --focus: var(--dune);
+    gap: 1.5rem;
+    padding: 6rem var(--gutter) max(1.25rem, env(safe-area-inset-bottom));
+    /* Le fondu reste dans la marge haute : tout le texte repose sur un voile d’au moins 76 %. */
+    background: linear-gradient(
+      to top,
+      rgb(8 33 41 / 0.93) 0%,
+      rgb(8 33 41 / 0.86) calc(100% - 7rem),
+      rgb(8 33 41 / 0.55) calc(100% - 4rem),
+      rgb(8 33 41 / 0) 100%
+    );
+    text-shadow: 0 1px 12px rgb(8 33 41 / 0.35);
+    color: var(--dune);
+  }
+
+  .hero-panel h1 {
+    color: var(--dune);
+    font-size: clamp(2.1rem, 1.2rem + 5.2vw, 3.1rem);
+  }
+
+  .hero-panel .kicker,
+  .hero-panel .scene-mark {
+    color: #ecdcc9;
+  }
+
+  .hero-panel .scene-mark__hint {
+    color: rgb(247 245 240 / 0.8);
+  }
+
+  .hero-panel .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin-top: 1.1rem;
+    padding-top: 0.9rem;
+    border-top-color: var(--ligne-claire);
+    font-size: 0.9375rem;
+  }
+
+  .hero-panel .facts strong {
+    display: inline;
+    font-size: 1.125rem;
+    font-weight: 450;
+  }
+
+  .hero-panel .button {
+    border-color: var(--dune);
+    background: var(--dune);
+    color: var(--atlantique);
+  }
+
+  .hero-panel .link-arrow {
+    color: var(--dune);
+    text-decoration-color: rgb(247 245 240 / 0.5);
+  }
+
+  .hero-panel__actions {
+    margin-top: 1.4rem;
+  }
+
+  .hero-panel__lead {
+    margin-top: 0.9rem;
+  }
+}
+
+/* Téléphone : les faits essentiels remplacent le chapeau, repris dans la scène suivante. */
+@media (max-width: 599px) {
+  .hero-panel__lead,
+  .kicker__extra {
+    display: none;
+  }
+}
+
+@media (max-width: 899px) and (max-height: 740px) {
+  .hero-panel .scene-mark__hint {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .scene--sejour {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .hero-panel {
+    width: min(42%, 38rem);
+    padding: clamp(2rem, 6vh, 4.5rem) clamp(2rem, 4vw, 4rem) clamp(1.75rem, 4vh, 3rem);
+    background: var(--dune);
+    box-shadow: -1px 0 0 var(--ligne);
+  }
+
+  .hero-panel__inner {
+    margin-block: auto;
+  }
+}
+
+@media (min-width: 900px) and (max-height: 760px) {
+  .hero-panel h1 {
+    font-size: clamp(2.2rem, 1rem + 3vw, 3.4rem);
+  }
+
+  .hero-panel__lead {
+    margin-top: 1rem;
+    font-size: 1.0625rem;
+  }
+
+  .facts {
+    margin-top: 1.25rem;
+    padding-top: 1.1rem;
+  }
+
+  .hero-panel__actions {
+    margin-top: 1.4rem;
+  }
+}
+
+/* 02 — La terrasse */
+
+.scene--terrasse {
+  position: relative;
+}
+
+.caption-card {
+  position: relative;
+  z-index: 1;
+  background: var(--dune);
+  padding: 1.75rem 1.5rem 1.9rem;
+}
+
+.caption-card h2 {
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+}
+
+.caption-card p:last-child {
+  margin-top: 1rem;
+  max-width: 30em;
+}
+
+@media (max-width: 899px) {
+  .scene--terrasse .scene__media {
+    height: min(74svh, 46rem);
+  }
+
+  .caption-card {
+    margin: -3.5rem var(--gutter) 0;
+    box-shadow: 0 18px 40px -28px rgb(16 58 71 / 0.45);
+  }
+}
+
+@media (min-width: 900px) {
+  .scene--terrasse {
+    display: flex;
+    align-items: flex-end;
+    min-height: calc(100svh - var(--header-h));
+    padding: clamp(2rem, 5vw, 4rem) var(--gutter);
+  }
+
+  .scene--terrasse .scene__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  .caption-card {
+    width: min(100%, 33rem);
+    padding: 2.25rem 2.5rem 2.4rem;
+  }
+}
+
+/* Raccord 01 → 02 sur ordinateur : la scène reste en place pendant le fondu. */
+
+.passage.is-pinned {
+  height: calc(100svh - var(--header-h) + 140vh);
+}
+
+.passage.is-pinned .passage__stage {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h));
+  overflow: hidden;
+}
+
+.passage.is-pinned .scene {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+}
+
+.passage.is-pinned .scene__media--salon img {
+  transform: scale(calc(1 + 0.11 * var(--zoom, 0)));
+  transform-origin: 20% 48%;
+  will-change: transform;
+}
+
+.passage.is-pinned .hero-panel {
+  transform: translateX(calc(var(--h-out, 0) * 102%));
+  will-change: transform;
+}
+
+.passage.is-pinned .hero-panel__inner,
+.passage.is-pinned .hero-panel__mark {
+  opacity: calc(1 - var(--h-out, 0) * 1.8);
+}
+
+.passage.is-pinned.is-hero-gone .hero-panel {
+  visibility: hidden;
+}
+
+.passage.is-pinned .scene--terrasse {
+  z-index: 2;
+  opacity: var(--t-in, 0);
+  visibility: hidden;
+}
+
+/* Au milieu du fondu, un voile de lumière évite la double exposition des deux pièces. */
+.passage.is-pinned .passage__stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--dune);
+  opacity: calc(var(--wash, 0) * 0.42);
+  pointer-events: none;
+}
+
+.passage.is-pinned.is-terrace-shown .scene--terrasse {
+  visibility: visible;
+}
+
+.passage.is-pinned .scene__media--terrasse img {
+  transform: scale(calc(1.07 - 0.07 * var(--t-in, 0)));
+  transform-origin: 50% 60%;
+  will-change: transform;
+}
+
+.passage.is-pinned .caption-card {
+  opacity: var(--c-in, 0);
+  transform: translateY(calc((1 - var(--c-in, 0)) * 1.75rem));
+}
+
+/* Clip « salon → terrasse » optionnel : la photo reste dessous comme image d’attente. */
+.scene__media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.passage.is-pinned.has-clip .scene__media video {
+  opacity: 1;
+}
+
+/* Suite de la scène 02 — deux terrasses et un petit jardin */
+
+.scene--dehors {
+  padding-block: clamp(4.5rem, 11vw, 9rem) clamp(4rem, 9vw, 7.5rem);
+}
+
+.dehors {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.dehors__text p {
+  margin-top: 1.25rem;
+  max-width: 30em;
+  font-size: 1.125rem;
+}
+
+.dehors__fig img,
+.logement__fig img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--sable);
+}
+
+figcaption {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+  color: var(--texte-doux);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+figcaption::before {
+  content: "";
+  flex: none;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--bois);
+  transform: translateY(-0.3em);
+}
+
+@media (min-width: 900px) {
+  .dehors {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: clamp(2.5rem, 6vw, 6rem);
+    row-gap: clamp(3rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .dehors__text {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .dehors__fig--jardin {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 2rem;
+  }
+
+  .dehors__fig--salon {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+/* 03 — De la terrasse à la plage */
+
+.scene--chemin {
+  padding-block: clamp(5rem, 14vw, 11rem) clamp(5rem, 13vw, 10rem);
+  background: linear-gradient(to bottom, var(--dune) 0%, var(--brume) 100%);
+}
+
+.chemin__title {
+  max-width: 13em;
+  font-size: clamp(2.4rem, 1.3rem + 4.4vw, 5.25rem);
+  line-height: 1.02;
+}
+
+.chemin__body {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  max-width: 34em;
+  font-size: 1.125rem;
+}
+
+.chemin__aside {
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--bois);
+  color: var(--texte-doux);
+  font-size: 1rem;
+}
+
+.chemin__body p + .chemin__aside {
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .chemin {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+
+  .chemin .scene-mark,
+  .chemin__title {
+    grid-column: 1 / span 9;
+  }
+
+  .chemin__body {
+    grid-column: 7 / span 6;
+  }
+}
+
+/* 04 — La plage */
+
+.scene--plage {
+  --focus: var(--dune);
+  padding-block: clamp(6rem, 17vw, 13rem);
+  background: var(--atlantique);
+  color: var(--brume);
+}
+
+.scene--plage .scene-mark {
+  color: #e9d5bf;
+}
+
+.scene--plage h2,
+.scene--plage h3 {
+  color: var(--dune);
+}
+
+.plage__title {
+  max-width: 14em;
+}
+
+.horizon {
+  height: 1px;
+  margin-block: clamp(3rem, 8vw, 5.5rem) clamp(2.5rem, 5vw, 3.5rem);
+  background: linear-gradient(to right, rgb(215 231 229 / 0.7), rgb(215 231 229 / 0.25));
+  transform-origin: left center;
+}
+
+.plages {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.plages h3 {
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.75rem);
+  font-weight: 350;
+  line-height: 1.05;
+}
+
+.plages p {
+  margin-top: 0.9rem;
+  max-width: 24em;
+}
+
+.plage__note {
+  margin-top: clamp(3rem, 7vw, 5rem);
+  max-width: 40em;
+  color: rgb(215 231 229 / 0.85);
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 760px) {
+  .plages {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem clamp(2rem, 4vw, 4rem);
+  }
+}
+
+/* 05 — Vos journées */
+
+.scene--journees {
+  padding-block: clamp(5rem, 12vw, 9rem);
+}
+
+.journees__head {
+  max-width: 44rem;
+}
+
+.journees__intro {
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+}
+
+.journees__list {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--ligne);
+}
+
+.journee {
+  padding-block: 1.75rem 2rem;
+  border-bottom: 1px solid var(--ligne);
+}
+
+.journee__lieu {
+  margin-bottom: 0.6rem;
+  color: var(--bois-texte);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.journee h3 {
+  font-size: clamp(1.5rem, 1.25rem + 0.8vw, 1.875rem);
+}
+
+.journee h3 + p {
+  margin-top: 0.75rem;
+  max-width: 30em;
+}
+
+.sources {
+  margin-top: 2.5rem;
+  color: var(--texte-doux);
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 760px) {
+  .journees__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 4rem);
+    border-top: 0;
+  }
+
+  .journee {
+    border-top: 1px solid var(--ligne);
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .journees__list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 2.5rem;
+  }
+}
+
+/* Bouton « Passer la visite » pendant la promenade */
+
+.skip-tour {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  background: rgb(247 245 240 / 0.95);
+  box-shadow: 0 10px 30px -12px rgb(11 43 53 / 0.45);
+  color: var(--atlantique);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.5rem);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease), visibility 0s linear 0.3s;
+}
+
+.skip-tour.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.3s ease, transform 0.3s var(--ease), visibility 0s;
+}
+
+/* --------------------------------------------------------------------------
+   Sections d’information
+   -------------------------------------------------------------------------- */
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 8rem);
+}
+
+.section__head {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.section__hint {
+  margin-top: 0.9rem;
+  color: var(--texte-doux);
+  font-size: 0.9375rem;
+}
+
+/* Le logement */
+
+.section--logement {
+  background: var(--sable);
+}
+
+.logement {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.logement__intro .lead {
+  margin-top: 1.25rem;
+}
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-block: 2rem 1.25rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--ligne);
+}
+
+@media (max-width: 399px) {
+  .figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.25rem;
+  }
+}
+
+.figures li {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.figures strong {
+  color: var(--atlantique);
+  font-family: var(--serif);
+  font-size: clamp(2rem, 1.6rem + 1.2vw, 2.75rem);
+  font-weight: 350;
+  line-height: 1;
+}
+
+.espaces {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--ligne);
+}
+
+.espace {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--ligne);
+}
+
+.espace dt {
+  color: var(--atlantique);
+  font-family: var(--serif);
+  font-size: 1.375rem;
+  font-weight: 450;
+  line-height: 1.2;
+}
+
+.espace dd {
+  margin-top: 0.6rem;
+}
+
+@media (min-width: 760px) {
+  .espaces {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2.5rem;
+    border-top: 0;
+  }
+
+  .espace {
+    border-top: 1px solid var(--ligne);
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .logement {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .espaces {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Galerie */
+
+.gallery {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.gallery__group h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.gallery__group h3 span {
+  color: var(--texte-doux);
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.gallery__item {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.gallery__item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--sable);
+  transition: transform 0.6s var(--ease), filter 0.3s ease;
+}
+
+.gallery__item:has(img[height="2133"]) img {
+  object-position: 50% 45%;
+}
+
+.gallery__frame,
+.gallery__item {
+  overflow: hidden;
+}
+
+.gallery__caption {
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--texte-doux);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.gallery__item:hover img {
+  transform: scale(1.025);
+}
+
+.gallery__item:hover .gallery__caption {
+  color: var(--atlantique);
+}
+
+@media (max-width: 759px) {
+  .gallery__list {
+    display: flex;
+    gap: 0.75rem;
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 0.25rem var(--gutter) 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery__list li {
+    flex: 0 0 min(80%, 22rem);
+    scroll-snap-align: start;
+  }
+}
+
+@media (min-width: 760px) {
+  .gallery__group {
+    display: grid;
+    grid-template-columns: minmax(10rem, 1fr) minmax(0, 4fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .gallery__group h3 {
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--ligne);
+  }
+
+  .gallery__list {
+    display: grid;
+    grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr));
+    gap: 1.25rem;
+    max-width: calc(var(--n, 3) * 22rem);
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1099px) {
+  .gallery__group {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .gallery__group h3 {
+    flex-direction: row;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .gallery__group[style*="--n: 4"] .gallery__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Équipements */
+
+.section--equipements {
+  background: var(--brume);
+  --ligne: rgb(16 58 71 / 0.2);
+}
+
+.equipements {
+  display: grid;
+  gap: 2rem 2.5rem;
+}
+
+.equipements__group h3 {
+  margin-bottom: 0.75rem;
+  color: var(--bois-texte);
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.equipements__group li {
+  padding-block: 0.7rem;
+  border-top: 1px solid var(--ligne);
+  color: var(--atlantique);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.equipements__group li.equipements__non {
+  color: var(--texte-doux);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+@media (min-width: 600px) {
+  .equipements {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1000px) {
+  .equipements {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Informations pratiques */
+
+.pratique {
+  display: grid;
+  gap: clamp(3rem, 7vw, 5rem);
+}
+
+.infos {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--ligne);
+}
+
+.info {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 2fr) minmax(0, 5fr);
+  gap: 1rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--ligne);
+}
+
+.info dt {
+  color: var(--bois-texte);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.9;
+  text-transform: uppercase;
+}
+
+.info dd {
+  color: var(--atlantique);
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 479px) {
+  .info {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+.pratique__note {
+  margin-top: 1.5rem;
+  color: var(--texte-doux);
+  font-size: 0.9375rem;
+}
+
+.faq__title {
+  margin-bottom: 1rem;
+  font-size: 1.625rem;
+}
+
+.faq__item {
+  border-top: 1px solid var(--ligne);
+}
+
+.faq__item:last-child {
+  border-bottom: 1px solid var(--ligne);
+}
+
+.faq__item summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
+  padding: 0.75rem 2.5rem 0.75rem 0;
+  color: var(--atlantique);
+  font-weight: 700;
+  line-height: 1.35;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary::before,
+.faq__item summary::after {
+  content: "";
+  position: absolute;
+  right: 0.35rem;
+  top: 50%;
+  width: 0.9rem;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease);
+}
+
+.faq__item summary::after {
+  transform: rotate(90deg);
+}
+
+.faq__item[open] summary::after {
+  transform: rotate(0deg);
+}
+
+.faq__item p {
+  padding-bottom: 1.25rem;
+  max-width: 34em;
+}
+
+@media (min-width: 900px) {
+  .pratique {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: clamp(3rem, 7vw, 6rem);
+    align-items: start;
+  }
+
+  .faq {
+    padding-top: 6.5rem;
+  }
+}
+
+/* Réservation */
+
+.section--reservation {
+  --focus: var(--dune);
+  background: var(--atlantique);
+  color: var(--brume);
+}
+
+.section--reservation h2 {
+  color: var(--dune);
+  font-size: clamp(2.2rem, 1.4rem + 3vw, 4rem);
+}
+
+.section--reservation .kicker {
+  color: #e9d5bf;
+}
+
+.reservation {
+  display: grid;
+  gap: 2.5rem;
+  align-items: end;
+}
+
+.reservation__text p:last-child {
+  margin-top: 1.25rem;
+  max-width: 34em;
+  font-size: 1.125rem;
+}
+
+.reservation__actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.reservation__actions .button {
+  justify-content: space-between;
+  min-height: 3.5rem;
+  padding-inline: 1.4rem;
+}
+
+.reservation__small {
+  margin-top: 0.5rem;
+  color: rgb(215 231 229 / 0.85);
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 900px) {
+  .reservation {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: clamp(3rem, 7vw, 6rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Pied de page
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  padding-block: clamp(3.5rem, 7vw, 5rem) max(2.5rem, env(safe-area-inset-bottom));
+  background: var(--sable);
+  font-size: 0.9375rem;
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.brand--footer .brand__name {
+  font-size: 1.875rem;
+}
+
+.site-footer__brand p {
+  margin-top: 1rem;
+  max-width: 22em;
+  color: var(--texte-doux);
+}
+
+.site-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.site-footer__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  color: var(--atlantique);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-footer__nav a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__legal {
+  color: var(--texte-doux);
+}
+
+@media (min-width: 900px) {
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
+    column-gap: 3rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Visionneuse de la galerie
+   -------------------------------------------------------------------------- */
+
+.lightbox {
+  --focus: var(--dune);
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #0a1d23;
+  color: var(--dune);
+}
+
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.lightbox::backdrop {
+  background: rgb(9 27 33 / 0.6);
+}
+
+.lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 4.5rem 1rem 6rem;
+  touch-action: pan-y;
+}
+
+.lightbox__img {
+  width: auto;
+  max-width: min(100%, 90rem);
+  max-height: calc(100dvh - 11rem);
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox__caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1rem;
+  margin-top: 1rem;
+  color: var(--brume);
+  text-align: center;
+}
+
+.lightbox__caption::before {
+  display: none;
+}
+
+.lightbox__count {
+  color: rgb(215 231 229 / 0.75);
+  font-variant-numeric: tabular-nums;
+}
+
+.lightbox__btn,
+.lightbox__close {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  border: 1px solid rgb(247 245 240 / 0.35);
+  border-radius: 999px;
+  background: rgb(9 27 33 / 0.55);
+  color: var(--dune);
+  font: 700 1rem/1 var(--sans);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox__btn:hover,
+.lightbox__close:hover {
+  border-color: var(--dune);
+  background: rgb(247 245 240 / 0.12);
+}
+
+.lightbox__btn {
+  font-size: 1.25rem;
+}
+
+.lightbox__close {
+  top: max(1rem, env(safe-area-inset-top));
+  right: 1rem;
+  padding-inline: 1.1rem;
+}
+
+.lightbox__btn--prev,
+.lightbox__btn--next {
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.lightbox__btn--prev {
+  left: calc(50% - 3.75rem);
+}
+
+.lightbox__btn--next {
+  right: calc(50% - 3.75rem);
+}
+
+@media (min-width: 900px) {
+  .lightbox__figure {
+    padding: 4.5rem 7rem 3rem;
+  }
+
+  .lightbox__img {
+    max-height: calc(100dvh - 10rem);
+  }
+
+  .lightbox__btn--prev,
+  .lightbox__btn--next {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  .lightbox__btn--prev {
+    left: 1.5rem;
+  }
+
+  .lightbox__btn--next {
+    right: 1.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Clip d’ambiance (prêt pour les futures vidéos, voir docs/MEDIAS_ATTENDUS.md)
+   -------------------------------------------------------------------------- */
+
+.ambient {
+  position: relative;
+}
+
+.ambient__frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--sable);
+}
+
+.ambient__poster,
+.ambient__video {
+  width: 100%;
+  aspect-ratio: var(--ratio, 16 / 9);
+  object-fit: cover;
+}
+
+.ambient__video {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.ambient.is-ready .ambient__video {
+  opacity: 1;
+}
+
+.ambient.is-failed .ambient__video {
+  display: none;
+}
+
+.ambient__toggle {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(247 245 240 / 0.92);
+  color: var(--atlantique);
+  font: 700 0.875rem/1 var(--sans);
+  cursor: pointer;
+}
+
+.ambient__toggle[hidden] {
+  display: none;
+}
+
+.ambient__icon {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.8rem;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.ambient.is-playing .ambient__icon {
+  clip-path: polygon(0 0, 35% 0, 35% 100%, 0 100%, 0 0, 65% 0, 100% 0, 100% 100%, 65% 100%, 65% 0);
+}
+
+/* --------------------------------------------------------------------------
+   Apparitions au défilement (uniquement si le mouvement est accepté)
+   -------------------------------------------------------------------------- */
+
+.js.motion-ok .reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.9s var(--ease), transform 1s var(--ease);
+}
+
+.js.motion-ok .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.js.motion-ok .plages__item:nth-child(2),
+.js.motion-ok .journee:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.js.motion-ok .plages__item:nth-child(3),
+.js.motion-ok .journee:nth-child(3) {
+  transition-delay: 0.24s;
+}
+
+.js.motion-ok .journee:nth-child(4) {
+  transition-delay: 0.36s;
+}
+
+.js.motion-ok .scene--plage .reveal {
+  transition-duration: 1.4s, 1.5s;
+}
+
+.js.motion-ok .horizon {
+  transform: scaleX(0);
+  transition: transform 2.2s var(--ease) 0.2s;
+}
+
+.js.motion-ok .horizon.is-visible {
+  transform: scaleX(1);
+}
+
+/* Raccord léger sur téléphone : la terrasse se précise à l’arrivée. */
+.js.motion-ok .passage:not(.is-pinned) .reveal-media img {
+  opacity: 0.001;
+  transform: scale(1.06);
+  transition: opacity 1.1s ease, transform 1.4s var(--ease);
+}
+
+.js.motion-ok .passage:not(.is-pinned) .reveal-media.is-visible img {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
